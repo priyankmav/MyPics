@@ -5,7 +5,6 @@ import {DataServices} from './data-services';
 export class Users {
   constructor(data) {
     this.data = data;
-
     this.USER_SERVICE = 'users';
   }
 

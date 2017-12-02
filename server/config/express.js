@@ -48,6 +48,7 @@ module.exports = function (app, config) {
 
 require('../app/controllers/users')(app, config);
 require('../app/controllers/gallery')(app, config);
+require('../app/controllers/photo')(app, config);
 
 app.use(express.static(config.root + '/public'));
   

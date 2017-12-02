@@ -2,13 +2,6 @@
 		<center><div class="container">
 				<div class="card topMargin" style ="width: 800px" >
 	                    <div class="row">
-				    <span class="leftMargin  pull-left">
-					<div class="form-check">
-					<label class="form-check-label">
-					 <input change.trigger="toggleShowCompleted()" type="checkbox" class="form-check-input">Show completed</input>
-					</label>
-				</span>	
-			
                         <span class="col">
 							<span class="rightMargin  pull-right"><button type="button" class="btn btn-primary btn-md"  click.trigger="createGallery()">Create a Gallery</button>
 								<button type="button" class="btn btn-primary btn-md"  click.trigger="logout()">Logout</button>
@@ -50,7 +43,7 @@
 	</center>
 
 	<div show.bind="!gallery.galleryArray.length">
-		<h2>Apparently, you don't have anything to do!</h2>
+		<h2>You don't have any photo collections!</h2>
 	</div>
 
        
