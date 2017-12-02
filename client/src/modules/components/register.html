@@ -1,0 +1,25 @@
+<template>
+        <div id="errorMsg" innerhtml.bind="registerError"></div>
+       <center> <div class="card" style="width:800px">
+                <div class="card-body">
+                        <h4 class="card-title">Register</h4>
+                <center>
+                        <form class="form-inline">
+                                       
+            First Name: <input value.bind="user.firstName" class="form-control" id="firstName" placeholder="First Name">
+        
+            Last Name: <input value.bind="user.lastName" class="form-control" id="lastName" placeholder="Last Name"> 
+    
+    </form> <p>
+            <form class="form-inline">
+            Email: <input value.bind="user.email" type="email" class="form-control" id="email" placeholder="Email"> 
+            Password: <input value.bind="user.password" type="password" class="form-control" id="password" placeholder="Password">
+     </form> </p>
+        <button type="button" class="btn btn-primary" click.trigger="save()">Register</button>
+    <button type="button" class="btn btn-link" click.trigger="goback()">Go to Login</button>
+</form> 
+</center>
+    </div>
+    </div>
+</center>
+</template>

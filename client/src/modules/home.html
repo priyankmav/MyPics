@@ -1,0 +1,17 @@
+<template>
+   <!-- Welcome to the Todo's login! -->
+  <!--  <h2>${message}</h2> -->
+<link href="../../resources/css/styles.css" rel="stylesheet" />
+<div class="container">
+<div class="jumbotron">
+    <h2>Welcome to your Todo's list!</h2> 
+    <p>Please sign in to access your list and be organised! :)</p> 
+  </div>
+</div>
+ 
+ 
+    <compose show.bind="showLogin" view="./components/login.html"></compose>
+
+    <compose show.bind="!showLogin" view="./components/register.html"></compose>
+</template>
+    

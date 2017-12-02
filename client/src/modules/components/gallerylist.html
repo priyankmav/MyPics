@@ -1,0 +1,59 @@
+<template> 
+		<center><div class="container">
+				<div class="card topMargin" style ="width: 800px" >
+	                    <div class="row">
+				    <span class="leftMargin  pull-left">
+					<div class="form-check">
+					<label class="form-check-label">
+					 <input change.trigger="toggleShowCompleted()" type="checkbox" class="form-check-input">Show completed</input>
+					</label>
+				</span>	
+			
+                        <span class="col">
+							<span class="rightMargin  pull-right"><button type="button" class="btn btn-primary btn-md"  click.trigger="createGallery()">Create a Gallery</button>
+								<button type="button" class="btn btn-primary btn-md"  click.trigger="logout()">Logout</button>
+							</span>
+	               </span>
+	</div>
+</div>
+</div>
+</center>
+      <center>
+		<div class="container">
+        <div show.bind="gallery.galleryArray.length">		
+				<div class="table-responsive">
+						<table class="table">
+				<thead>
+					<tr>
+						<th>Gallery</th>
+						 <th>Description</th>
+						<th>Date Created</th>					
+					</tr>
+				</thead>
+				<tbody>
+						<tr class repeat.for = "gallery of gallery.galleryArray">
+					<th>${gallery.gallery}</th>
+					<td>${gallery.description}</td> 
+					<td>${gallery.dateCreated}</td>
+			<td><a href="http://localhost:5000/uploads/${user._id}/${todo.file.filename}" target="_blank">${todo.file.originalName}</a></td>					
+					        <td>
+			<i click.trigger="editGallery(gallery)" class="fa fa-pencil rightMargin" aria-hidden="true"></i>
+			<i click.trigger="deleteGallery(gallery)"class="fa fa-trash rightMargin" aria-hidden="true"></i>
+			
+							        </td>												
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+	</div>
+	</center>
+
+	<div show.bind="!gallery.galleryArray.length">
+		<h2>Apparently, you don't have anything to do!</h2>
+	</div>
+
+       
+	
+        </template>
+        

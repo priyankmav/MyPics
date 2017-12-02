@@ -1,0 +1,13 @@
+<template>
+            
+        <div class="container">
+                        <div class="jumbotron">
+                    <h2>Welcome to ${user.firstName}'s photo galleries!</h2> 
+                          </div>
+                        </div>
+            <compose show.bind="showGallery" view="./components/gallerylist.html"></compose>
+            <compose show.bind="!showGallery" view="./components/todoForm.html"></compose>
+        <!--button click.trigger="logout()">logout</button>
+        <button click.trigger="createTodo()">Create a Todo</button-->
+        </template>
+        
