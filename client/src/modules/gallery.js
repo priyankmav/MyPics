@@ -15,7 +15,7 @@ export class GalleryList {
     this.title = "These are you galleries!";
     this.editGalleryForm = false;
     this.showGallery = true;
-    this.createGallery = false;
+    this.addOrEditGallery = false;
     this.showPhotos = false;
       }
 
@@ -31,8 +31,10 @@ export class GalleryList {
       gallery: '',
       description: '',
       userId: this.user._id,
-       };
+    };
     this.showGallery = false;
+    this.addOrEditGallery = true;
+    this.showPhotos = false;
   }
 
  
@@ -64,7 +66,7 @@ export class GalleryList {
 
   back() {
     this.showGallery = true;
-    this.createGallery = false;
+    this.addOrEditGallery = false;
     this.showPhotos = false;
     
   }
@@ -79,7 +81,7 @@ export class GalleryList {
 
   addPhotos(gallery) {
     this.showGallery = false;
-    this.createGallery = false;
+    this.addOrEditGallery = false;
     this.showPhotos = true;
   }
 }
