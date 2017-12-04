@@ -15,6 +15,7 @@ export class App {
      name: 'Gallery',
      auth: true 
      }
+     
     ]);
   }
 }

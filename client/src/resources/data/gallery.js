@@ -38,14 +38,14 @@ export class Gallery {
   }
 
 
-  async uploadFile(files, userId, galleryId) {
+ /** async uploadFile(files, userId, galleryId) {
     let formData = new FormData();
     files.forEach((item, index) => {
       formData.append("file" + index, item);
     });
     let response = await this.data.uploadFiles(formData, this.GALLERY_SERVICE + "/upload/" + userId + "/" + galleryId);
     return response;
-  }
+  }**/
 
   async getUserGallery(id) {
     let response = await this.data.get(this.GALLERY_SERVICE + "/" + id);

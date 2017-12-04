@@ -15,7 +15,8 @@ export class GalleryList {
     this.title = "These are you galleries!";
     this.editGalleryForm = false;
     this.showGallery = true;
-    this.showCompleted = false;
+    this.createGallery = false;
+    this.showPhotos = false;
       }
 
 
@@ -60,17 +61,12 @@ export class GalleryList {
   deleteGallery(gallery) {
     this.gallery.deleteGallery(gallery._id);
   }
-  completeGalleryGallery(gallery) {
-    gallery.completed = !gallery.completed;
-    this.galleryObj = gallery;
-    this.saveGallery();
-  }
-  toggleShowCompleted() {
-    this.showCompleted = !this.showCompleted;
-  }
 
   back() {
     this.showGallery = true;
+    this.createGallery = false;
+    this.showPhotos = false;
+    
   }
 
   changeFiles() {
@@ -79,5 +75,11 @@ export class GalleryList {
   }
   removeFile(index) {
     this.filesToUpload.splice(index, 1);
+  }
+
+  addPhotos(gallery) {
+    this.showGallery = false;
+    this.createGallery = false;
+    this.showPhotos = true;
   }
 }

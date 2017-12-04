@@ -13,7 +13,7 @@
 </center>
       <center>
 		<div class="container">
-        <div show.bind="gallery.galleryArray.length">		
+        <div show.bind="gallery.galleryArray.length"></div>		
 				<div class="table-responsive">
 						<table class="table">
 				<thead>
@@ -24,8 +24,8 @@
 					</tr>
 				</thead>
 				<tbody>
-						<tr class repeat.for = "gallery of gallery.galleryArray">
-					<th>${gallery.gallery}</th>
+					<tr class repeat.for = "gallery of gallery.galleryArray">
+					<th><button click.trigger="addPhotos()" class="btn btn-primary">${gallery.gallery}</button></th>
 					<td>${gallery.description}</td> 
 					<td>${gallery.dateCreated}</td>
 			<td><a href="http://localhost:5000/uploads/${user._id}/${todo.file.filename}" target="_blank">${todo.file.originalName}</a></td>					
