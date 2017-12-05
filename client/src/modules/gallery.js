@@ -1,15 +1,15 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {Gallery} from '../resources/data/gallery';
+import {Photos} from '../resources/data/photos';
 import { AuthService } from 'aurelia-auth';
 
 
-@inject(Router, Gallery, AuthService)
+@inject(Router, Gallery, Photos, AuthService)
 export class GalleryList {
-  constructor(router, gallery, auth) {
+  constructor(router, gallery, photo, auth) {
     this.gallery = gallery;
     this.router = router;
-    this.message = 'List';
     this.auth = auth;
     this.user = JSON.parse(sessionStorage.getItem('user'));
     this.title = "These are you galleries!";
@@ -17,6 +17,7 @@ export class GalleryList {
     this.showGallery = true;
     this.addOrEditGallery = false;
     this.showPhotos = false;
+    this.photo = photo;
       }
 
 
@@ -44,12 +45,7 @@ export class GalleryList {
       if (response.error) {
         alert('There was an error creating the Gallery');
       } else {
-        var galleryId = response._id;
-        if (this.filesToUpload && this.filesToUpload.length) {
-          await this.gallery.uploadFile(this.filesToUpload, this.user._id, galleryId);
-          this.filesToUpload = [];
-        }
-      }
+              }
     }
     this.showGallery = true;
   }
@@ -71,6 +67,36 @@ export class GalleryList {
     
   }
 
+  addPhotos(gallery) {
+    this.photoObj = {
+      galleryId: gallery._id
+    };
+    this.showGallery = false;
+    this.addOrEditGallery = false;
+    this.showPhotos = true;
+  }
+
+  async savePhoto() {
+    if (this.photoObj) {
+      let response = await this.photo.save(this.photoObj);
+      if (response.error) {
+        alert('There was an error uploading the Photo');
+      } else {
+        var photoId = response._id;
+        var galleryId = response.galleryId;
+        if (this.filesToUpload && this.filesToUpload.length) {
+          await this.photo.uploadFile(this.filesToUpload, galleryId,  photoId);
+          this.filesToUpload = [];
+        }
+      }
+    }
+    this.showGallery = true;
+    this.addOrEditGallery = false;
+    this.showPhotos = false;
+  }
+  async activate2() {
+    await this.todos.getUserPhoto(galleryId);
+  }
   changeFiles() {
     this.filesToUpload = new Array();
     this.filesToUpload.push(this.files[0]);
@@ -79,9 +105,5 @@ export class GalleryList {
     this.filesToUpload.splice(index, 1);
   }
 
-  addPhotos(gallery) {
-    this.showGallery = false;
-    this.addOrEditGallery = false;
-    this.showPhotos = true;
-  }
+  
 }

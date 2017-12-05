@@ -8,13 +8,29 @@
                         </div>
                     </div>	
                     <div class="container">
-                        <div show.bind="photo.photoArray.length">		
+                        <div show.bind="gallery.galleryArray.length"></div>		
+                                <div class="table-responsive">
+                                        <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>File</th>
+                                         <th>Picture</th>
+                                        <th>Date Uploaded</th>					
+                                    </tr>
+                                </thead>
+                                <tbody>
+                    <div class="container">
+                        <div show.bind="photo.photosArray.length">		
                              
-                            <tr class repeat.for = "photo_id of gallery.galleryArray">
-                                        
-                                    <td><img src ="http://localhost:5000/uploads/${user._id}/${todo.file.filename}" target="_blank">${todo.file.originalName}</a></td>" ${todo.dateDue | dateFormat}</td> 
-                                    <td><a href="http://localhost:5000/uploads/${user._id}/${todo.file.filename}" target="_blank">${todo.file.originalName}</a></td>					
-                                            <td>
+                            <tr class repeat.for = "galleryId of photo.photosArray">
+                                     <td></td>   
+                                    <!--<td><img src ="http://localhost:5000/uploads/${user._id}/${photo.file.filename}" target="_blank">${photo.file.originalName}</a></td>" ${todo.dateDue | dateFormat}</td> 
+                                    <td><a href="http://localhost:5000/uploads/${user._id}/${photo.file.filename}" target="_blank">${photo.file.originalName}</a></td>					
+                                            <td>-->
+
+                                            <td><img target="_blank">${photo.file.originalName}</a></td>" ${todo.dateDue | dateFormat}</td> 
+                                            <td><a  target="_blank">${photo.file.originalName}</a></td>					
+                                                    <td>
                             <i click.trigger="editPhoto(photo)" class="fa fa-pencil rightMargin" aria-hidden="true"></i>
                             <i click.trigger="deletePhoto(photo)"class="fa fa-trash rightMargin" aria-hidden="true"></i>
                             
@@ -26,7 +42,31 @@
                         </div>
                     </div>
                     </center>
-                
+                    <form>
+                    <div class="row">
+                        <div class="col">
+                                <label class="btn btn-secondary">
+                                                Browse for images&hellip; <input type="file" 
+                                                style="display: none;" 
+                                                change.delegate="changeFiles()" files.bind="files">
+                                </label>
+                                <small id="fileHelp" class="form-text text-muted">
+                                                Upload any files that will be useful.</small>
+                        </div>	
+                        <div class="col-8">
+                                <ul>
+                                        <li repeat.for="file of filesToUpload" class="list-group-item">
+                                                ${file.name}<span click.delegate="removeFile($index)" 
+                                                class="pull-right"><i class="fa fa-trash" aria-hidden="true">
+                                                </i></span></li>
+                                </ul>
+                        
+                        </div>
+                </div>
+                <br>
+                 <button click.trigger="savePhoto()" class="btn btn-primary topMargin">Save</button>
+                </br>
+                        </form>
                     <div show.bind="!photo.photoArray.length">
                         <h2>Apparently, you don't have any photos in this gallery!</h2>
                     </div>
