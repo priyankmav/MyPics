@@ -47,8 +47,8 @@ export class Photos {
     return response;
   }
 
-  async getUserPhoto(gallery._id) {
-    let response = await this.data.get("users/" + this.GALLERY_SERVICE + "/" + this.GALLERY_SERVICE._id);
+  async getUserPhoto(id) {
+    let response = await this.data.get("users/" + this.GALLERY_SERVICE + "/" + id);
     if (!response.error && !response.message) {
       this.photoArray = response;
     }

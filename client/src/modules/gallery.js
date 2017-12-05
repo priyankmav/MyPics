@@ -95,7 +95,7 @@ export class GalleryList {
     this.showPhotos = true;
   }
   async activate2() {
-    await this.photo.getUserPhoto(this.gallery._id);
+    await this.photo.getUserPhoto(JSON.parse(sessionStorage.getItem('gallery'))._id);
   }
   changeFiles() {
     this.filesToUpload = new Array();
