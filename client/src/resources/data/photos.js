@@ -4,10 +4,9 @@ import {DataServices} from './data-services';
 export class Photos {
   constructor(data) {
     this.data = data;
-    this.USER_SERVICE = 'users';
-    this.PHOTO_SERVICE = 'photos';
+    this.PHOTO_SERVICE = 'photo';
     this.GALLERY_SERVICE = 'gallery';
-    this.photosArray = [];
+    this.photoArray = [];
   }
 
   async save(photo) {
@@ -15,7 +14,7 @@ export class Photos {
       if (!photo._id) {
         let response = await this.data.post(photo, this.GALLERY_SERVICE + "/" + this.PHOTO_SERVICE);
         if (!response.error) {
-          this.photosArray.push(response);
+          this.photoArray.push(response);
         }
         return response;
       } else {
@@ -27,12 +26,12 @@ export class Photos {
       }
     }
   }
-  async deletePhoto(id) {
-    let response = await this.data.delete(this.GALLERY_SERVICE + "/" + galleryId + "/" + photoId);
+  async deletePhoto(photo) {
+    let response = await this.data.delete(this.PHOTO_SERVICE + "/" + this.GALLERY_SERVICE + "/" + photo._id);
     if (!response.error) {
       for (let i = 0; i < this.photoyArray.length; i++) {
-        if (this.photosArray[i]._id === id) {
-          this.photosArray.splice(i, 1);
+        if (this.photoArray[i]._id === id) {
+          this.photoArray.splice(i, 1);
         }
       }
     }
@@ -48,10 +47,10 @@ export class Photos {
     return response;
   }
 
-  async getUserPhoto(galleryId) {
-    let response = await this.data.get("users/" + this.GALLERY_SERVICE + "/" + galleryId);
+  async getUserPhoto(gallery._id) {
+    let response = await this.data.get("users/" + this.GALLERY_SERVICE + "/" + this.GALLERY_SERVICE._id);
     if (!response.error && !response.message) {
-      this.photosArray = response;
+      this.photoArray = response;
     }
   }
 

@@ -9,14 +9,14 @@ multer = require('multer'),
 module.exports = function (app, config) {
     app.use('/api', router);
 
-    router.get('/photos', function (req, res, next) {
+    router.get('/photo', function (req, res, next) {
         Photo.find()
             .then(results => {
                 res.status(200).json(results);
             })
     })
 
-    router.post('/gallery/photos/', function (req, res, next) {
+    router.post('/gallery/photo/', function (req, res, next) {
         console.log('--------------------------Create Photo', 'verbose');
 
         var photo = new Photo(req.body);
@@ -102,7 +102,7 @@ module.exports = function (app, config) {
     });
 
 
-    router.delete('/gallery/:galleryId/:photoId', function (req, res, next) {
+    router.delete('/photo/:galleryId/:photoId', function (req, res, next) {
         logger.log('Delete Photo ', + req.params.photoId, 'verbose');
 
         Photo.remove({ _id: req.params.photoId })

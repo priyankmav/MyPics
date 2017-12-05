@@ -90,12 +90,12 @@ export class GalleryList {
         }
       }
     }
-    this.showGallery = true;
+    this.showGallery = false;
     this.addOrEditGallery = false;
-    this.showPhotos = false;
+    this.showPhotos = true;
   }
   async activate2() {
-    await this.todos.getUserPhoto(galleryId);
+    await this.photo.getUserPhoto(this.gallery._id);
   }
   changeFiles() {
     this.filesToUpload = new Array();
@@ -105,5 +105,7 @@ export class GalleryList {
     this.filesToUpload.splice(index, 1);
   }
 
-  
+  deletePhoto(photo) {
+    this.photo.deletePhoto(photo._id);
+  }
 }

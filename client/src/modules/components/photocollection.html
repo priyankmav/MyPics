@@ -13,24 +13,22 @@
                                         <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>File</th>
-                                         <th>Picture</th>
+                                        <th>Picture</th>
+                                         <th>FileName</th>
                                         <th>Date Uploaded</th>					
                                     </tr>
                                 </thead>
                                 <tbody>
                     <div class="container">
-                        <div show.bind="photo.photosArray.length">		
+                        <div show.bind="photo.photoArray.length">		
                              
-                            <tr class repeat.for = "galleryId of photo.photosArray">
-                                     <td></td>   
-                                    <!--<td><img src ="http://localhost:5000/uploads/${user._id}/${photo.file.filename}" target="_blank">${photo.file.originalName}</a></td>" ${todo.dateDue | dateFormat}</td> 
-                                    <td><a href="http://localhost:5000/uploads/${user._id}/${photo.file.filename}" target="_blank">${photo.file.originalName}</a></td>					
-                                            <td>-->
-
-                                            <td><img target="_blank">${photo.file.originalName}</a></td>" ${todo.dateDue | dateFormat}</td> 
-                                            <td><a  target="_blank">${photo.file.originalName}</a></td>					
-                                                    <td>
+                            <tr class repeat.for = "photo of photo.photoArray">
+                                       
+                                 <th><img src ="http://localhost:5000/uploads/${photo.galleryId}/${photo.file.filename}" target="_blank"></th>
+                                    <td>${photo.file.originalName}</td>
+                                </td>" ${photo.dateUploaded | dateFormat}</td> 
+                                    
+                                  <td>      
                             <i click.trigger="editPhoto(photo)" class="fa fa-pencil rightMargin" aria-hidden="true"></i>
                             <i click.trigger="deletePhoto(photo)"class="fa fa-trash rightMargin" aria-hidden="true"></i>
                             
