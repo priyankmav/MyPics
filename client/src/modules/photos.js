@@ -47,7 +47,7 @@ export class PhotoGallery {
   }
 
   deletePhoto(photo) {
-    this.photo.deletePhoto(photo._id);
+    this.photo.deletePhoto(this.photo._id);
   }
 
   back() {
