@@ -27,7 +27,7 @@ export class Photos {
     }
   }
   async deletePhoto(photo) {
-    let response = await this.data.delete(this.PHOTO_SERVICE + "/" + this.GALLERY_SERVICE + "/" + photo._id);
+    let response = await this.data.delete(this.PHOTO_SERVICE + "/" + photo._id);
     if (!response.error) {
       for (let i = 0; i < this.photoyArray.length; i++) {
         if (this.photoArray[i]._id === id) {
@@ -47,8 +47,8 @@ export class Photos {
     return response;
   }
 
-  async getUserPhoto(id) {
-    let response = await this.data.get("users/" + this.GALLERY_SERVICE + "/" + id);
+  async getUserPhoto(galleryId) {
+    let response = await this.data.get("users/" + this.GALLERY_SERVICE + "/" + galleryId);
     if (!response.error && !response.message) {
       this.photoArray = response;
     }

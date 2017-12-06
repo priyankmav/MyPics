@@ -102,7 +102,7 @@ module.exports = function (app, config) {
     });
 
 
-    router.delete('/photo/:galleryId/:photoId', function (req, res, next) {
+    router.delete('/photo/:photoId', function (req, res, next) {
         logger.log('Delete Photo ', + req.params.photoId, 'verbose');
 
         Photo.remove({ _id: req.params.photoId })

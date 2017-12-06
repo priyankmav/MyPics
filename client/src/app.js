@@ -14,8 +14,14 @@ export class App {
      moduleId: './modules/gallery',
      name: 'Gallery',
      auth: true 
-     }
+     },
      
+     {
+      route: 'photos',
+      moduleId: './modules/photos',
+      name: 'Photos',
+      auth: true 
+      }
     ]);
   }
 }

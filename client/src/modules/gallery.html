@@ -6,7 +6,7 @@
                           </div>
                         </div>
             <compose show.bind="showGallery" view="./components/gallerylist.html"></compose>
-            <compose show.bind="addOrEditGallery" view="./components/createGallery.html"></compose>
-        <compose show.bind="showPhotos" view="./components/photocollection.html"></compose>            
+            <compose show.bind="!showGallery" view="./components/createGallery.html"></compose>
+                   
                 </template>
         

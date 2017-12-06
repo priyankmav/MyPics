@@ -25,9 +25,9 @@
 				</thead>
 				<tbody>
 					<tr class repeat.for = "gallery of gallery.galleryArray">
-					<th><button click.trigger="addPhotos(gallery)" class="btn btn-primary">${gallery.gallery}</button></th>
+					<th><button click.trigger="showGalleryOrAdd(gallery)" class="btn btn-primary">${gallery.gallery}</button></th>
 					<td>${gallery.description}</td> 
-					<td>${gallery.dateCreated}</td>
+					<td>${gallery.dateCreated | dateFormat}</td>
 			<td><a href="http://localhost:5000/uploads/${user._id}/${todo.file.filename}" target="_blank">${todo.file.originalName}</a></td>					
 					        <td>
 			<i click.trigger="editGallery(gallery)" class="fa fa-pencil rightMargin" aria-hidden="true"></i>

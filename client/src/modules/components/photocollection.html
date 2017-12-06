@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-                   <h5>Welcome to ${gallery.description}'s Photo Collections!</h5> 
+                   <h5> ${gallery.gallery}'s Photo Collections!</h5> 
                     </div>
                     <div class="card topMargin">
                         <div class="card-body">
@@ -24,9 +24,9 @@
                              
                             <tr class repeat.for = "photo of photo.photoArray">
                                        
-                                 <th><img src ="http://localhost:5000/uploads/${photo.galleryId}/${photo.file.filename}" target="_blank"></th>
+                                 <th><a href = "http://localhost:5000/uploads/${photo.galleryId}/${photo.file.filename}" target ="_blank"><img src ="http://localhost:5000/uploads/${photo.galleryId}/${photo.file.filename}" style="width:50px; height: 50px;"></a></th>
                                     <td>${photo.file.originalName}</td>
-                                </td>" ${photo.dateUploaded | dateFormat}</td> 
+                                <td> ${photo.dateUploaded | dateFormat}</td> 
                                     
                                   <td>      
                             <i click.trigger="editPhoto(photo)" class="fa fa-pencil rightMargin" aria-hidden="true"></i>
