@@ -27,7 +27,7 @@ export class Photos {
     }
   }
   async deletePhoto(photo) {
-    let response = await this.data.delete(this.PHOTO_SERVICE + "/" + photo._id);
+    let response = await this.data.delete("photo" + "/" + this.PHOTO_SERVICE._id);
     if (!response.error) {
       for (let i = 0; i < this.photoyArray.length; i++) {
         if (this.photoArray[i]._id === id) {
