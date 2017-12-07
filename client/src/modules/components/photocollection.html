@@ -1,12 +1,28 @@
 <template>
     <div class="container">
-                   <h5> ${gallery.gallery}'s Photo Collections!</h5> 
+                   <h3> ${gallery.gallery}'s Photo Collections!</h3> 
                     </div>
                     <div class="card topMargin">
                         <div class="card-body">
                             <span><i click.trigger="back()" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i></span>
+                            <span class ="pull-right">Edit your photo to add name and description!</span>
                         </div>
                     </div>	
+                    <center>
+                    <div class="row">
+                        <div class="col">
+                                <label class="btn btn-secondary">
+                                                Upload Photos&hellip; <input type="file" 
+                                                style="display: none;" 
+                                                change.delegate="changeFiles()" files.bind="files">
+                                </label>
+                               <br> 
+                                <button type="button" class="btn btn-primary btn-md" click.trigger="savePhoto()" class="btn btn-primary topMargin">Save Photos</button>
+                            </br>
+                                <small id="fileHelp" class="form-text text-muted">
+                                                Upload your memories! :D</small>
+                        </div>	
+                    </center>
                     <div class="container">
                         <div show.bind="gallery.galleryArray.length"></div>		
                                 <div class="table-responsive">
@@ -14,6 +30,8 @@
                                 <thead>
                                     <tr>
                                         <th>Picture</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
                                          <th>FileName</th>
                                         <th>Date Uploaded</th>					
                                     </tr>
@@ -24,8 +42,10 @@
                              
                             <tr class repeat.for = "photo of photo.photoArray">
                                        
-                                 <th><a href = "http://localhost:5000/uploads/${photo.galleryId}/${photo.file.filename}" target ="_blank"><img src ="http://localhost:5000/uploads/${photo.galleryId}/${photo.file.filename}" style="width:50px; height: 50px;"></a></th>
-                                    <td>${photo.file.originalName}</td>
+                                 <th><a href = "http://localhost:5000/uploads/${photo.galleryId}/${photo.file.filename}" target ="_blank"><img src ="http://localhost:5000/uploads/${photo.galleryId}/${photo.file.filename}" style="width:100px; height: 100px;"></a></th>
+                                 <td>${photo.photoName}</td>
+                                 <td>${photo.photoDes}</td> 
+                                 <td>${photo.file.originalName}</td>
                                 <td> ${photo.dateUploaded | dateFormat}</td> 
                                     
                                   <td>      
@@ -41,16 +61,7 @@
                     </div>
                     </center>
                     <form>
-                    <div class="row">
-                        <div class="col">
-                                <label class="btn btn-secondary">
-                                                Browse for images&hellip; <input type="file" 
-                                                style="display: none;" 
-                                                change.delegate="changeFiles()" files.bind="files">
-                                </label>
-                                <small id="fileHelp" class="form-text text-muted">
-                                                Upload any files that will be useful.</small>
-                        </div>	
+                    
                         <div class="col-8">
                                 <ul>
                                         <li repeat.for="file of filesToUpload" class="list-group-item">
@@ -61,9 +72,6 @@
                         
                         </div>
                 </div>
-                <br>
-                 <button click.trigger="savePhoto()" class="btn btn-primary topMargin">Save</button>
-                </br>
                         </form>
                     <div show.bind="!photo.photoArray.length">
                         <h2>Apparently, you don't have any photos in this gallery!</h2>

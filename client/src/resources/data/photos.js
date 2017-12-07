@@ -26,17 +26,6 @@ export class Photos {
       }
     }
   }
-  async deletePhoto(photo) {
-    let response = await this.data.delete("photo" + "/" + photo._id);
-    if (!response.error) {
-      for (let i = 0; i < this.photoyArray.length; i++) {
-        if (this.photoArray[i]._id === id) {
-          this.photoArray.splice(i, 1);
-        }
-      }
-    }
-  }
-
 
   async uploadFile(files, galleryId, photoId) {
     let formData = new FormData();
@@ -54,4 +43,24 @@ export class Photos {
     }
   }
 
+  async deletePhoto(id) {
+    let response = await this.data.delete("photo" + "/" + id);
+    if (!response.error) {
+      for (let i = 0; i < this.photoArray.length; i++) {
+        if (this.photoArray[i]._id === id) {
+          this.photoArray.splice(i, 1);
+        }
+      }
+    }
+  }
+
+  async saveEdited(photo) {
+    if (photo) {
+      let response = await this.data.put(photo, this.GALLERY_SERVICE + "/" + photo._id);
+      if (!response.error) {
+// this.updateArray(response);
+      }
+      return response;
+    }
+  }
 }

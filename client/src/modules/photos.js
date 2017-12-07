@@ -10,13 +10,14 @@ export class PhotoGallery {
     this.router = router;
     this.auth = auth;
     this.gallery = JSON.parse(sessionStorage.getItem('gallery'));
+   // this.editPhoto2 = JSON.parse(sessionStorage.getItem('photo'));
     this.showPhotos = true;
   }
 
 
   async savePhoto() { {
     this.photoObj = {
-      galleryId: this.gallery._id,
+      galleryId: this.gallery._id
     };
   }   
     if (this.photoObj) {
@@ -47,10 +48,34 @@ export class PhotoGallery {
   }
 
   deletePhoto(photo) {
-    this.photo.deletePhoto(this.photo._id);
+      this.photo.deletePhoto(photo._id);
   }
 
+  editPhoto(photo) {
+   /** this.photoObj2 = {
+      id: photo._id,
+      photoName: '',
+      photoDes: ''
+    };**/
+    this.photoObj = photo;
+    this.showPhotos = false;
+  }
+
+  async saveEditedPhoto() {
+    if (this.photoObj2) {
+      let response = await this.photo.saveEdited(this.photoObj2);
+      if (response.error) {
+        alert('There was an error updating the photo details');
+      } else {
+              }
+    }
+    this.showPhotos = true;
+  }
   back() {
-      this.router.navigate('gallery');
+    this.router.navigate('gallery');
+  }
+
+  back2() {
+    this.showPhotos = true;
   }
 }
