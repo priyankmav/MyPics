@@ -10,13 +10,14 @@ export class PhotoGallery {
     this.router = router;
     this.auth = auth;
     this.gallery = JSON.parse(sessionStorage.getItem('gallery'));
-   // this.editPhoto2 = JSON.parse(sessionStorage.getItem('photo'));
+    this.editPhoto2 = JSON.parse(sessionStorage.getItem('photo'));
     this.showPhotos = true;
   }
 
 
   async savePhoto() { {
     this.photoObj = {
+      _id: this.photo._id,
       galleryId: this.gallery._id
     };
   }   
@@ -52,12 +53,7 @@ export class PhotoGallery {
   }
 
   editPhoto(photo) {
-   /** this.photoObj2 = {
-      id: photo._id,
-      photoName: '',
-      photoDes: ''
-    };**/
-    this.photoObj = photo;
+    this.photoObj2 = photo;
     this.showPhotos = false;
   }
 

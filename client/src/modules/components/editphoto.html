@@ -7,14 +7,14 @@
 	<form>
 		<div class="form-group topMargin">
 			  <label for="photoInput">Your Photo Name *</label>
-			  <input value.bind="photoObj.photoName" type="text" class="form-control" id="photoNameInput" aria-describedby="photoHelp" 
+			  <input value.bind="photoObj2.photoName" type="text" class="form-control" id="photoNameInput" aria-describedby="photoHelp" 
 				placeholder="Enter photo name">
 			  <small id="photoHelp" class="form-text text-muted">
 				A name for the photo.</small>
 		</div>
         <div class="form-group">
             <label for="descriptionInput">Description</label>
-            <textarea value.bind="photoObj.photoDes" type="text" class="form-control" 
+            <textarea value.bind="photoObj2.photoDes" type="text" class="form-control" 
 			id="photoDesInput" aria-describedby="photoDescriptionHelp" 
 			placeholder="Enter Description for Photo"></textarea>
             <small id="photodescriptionHelp" class="form-text text-muted">
@@ -22,7 +22,7 @@
         </div>
 
 <br>
- <button click.trigger="savePhoto()" class="btn btn-primary topMargin">Save</button>
+ <button click.trigger="saveEditedPhoto()" class="btn btn-primary topMargin">Save</button>
 </br>
         </form>
     </template>

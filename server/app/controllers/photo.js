@@ -89,7 +89,7 @@ module.exports = function (app, config) {
     });
 
 
-    router.put('/gallery/:photoId', function (req, res, next) {
+    router.put('/gallery/photo/:photoId', function (req, res, next) {
         logger.log('Update Photo', + req.params.photoId, 'verbose');
 
         Photo.findOneAndUpdate({ _id: req.params.photoId }, req.body, { new: true, multi: false })

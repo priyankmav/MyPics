@@ -18,7 +18,7 @@ export class Photos {
         }
         return response;
       } else {
-        let response = await this.data.put(photo, this.GALLERY_SERVICE + "/" + photo._id);
+        let response = await this.data.put(photo, this.GALLERY_SERVICE + "/" + this.PHOTO_SERVICE + "/" + photo._id);
         if (!response.error) {
 // this.updateArray(response);
         }
@@ -56,7 +56,7 @@ export class Photos {
 
   async saveEdited(photo) {
     if (photo) {
-      let response = await this.data.put(photo, this.GALLERY_SERVICE + "/" + photo._id);
+      let response = await this.data.put(photo, this.GALLERY_SERVICE + "/" + this.PHOTO_SERVICE + "/" + photo._id);
       if (!response.error) {
 // this.updateArray(response);
       }
