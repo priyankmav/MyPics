@@ -1,11 +1,11 @@
 <template>
     <div class="container">
-                   <h3> ${gallery.gallery}'s Photo Collections!</h3> 
+                   <h3> ${gallery.gallery}'s Photo Collection!</h3> 
                     </div>
                     <div class="card topMargin">
                         <div class="card-body">
                             <span><i click.trigger="back()" class="fa fa-arrow-left fa-lg" aria-hidden="true"></i></span>
-                            <span class ="pull-right">Edit your photo to add name and description!</span>
+                            <span class ="pull-right"><b>Edit your photo to add name and description!</b></span>
                         </div>
                     </div>	
                     <center>
@@ -33,7 +33,8 @@
                                         <th>Name</th>
                                         <th>Description</th>
                                          <th>FileName</th>
-                                        <th>Date Uploaded</th>					
+                                        <th>Date Uploaded</th>
+                                        <th>Edit | Delete</th>				
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,10 +50,10 @@
                                 <td> ${photo.dateUploaded | dateFormat}</td> 
                                     
                                   <td>      
-                            <i click.trigger="editPhoto(photo)" class="fa fa-pencil rightMargin" aria-hidden="true"></i>
+                            <i click.trigger="editPhoto(photo)" class="fa fa-pencil rightMargin" aria-hidden="true"></i> |
                             <i click.trigger="deletePhoto(photo)"class="fa fa-trash rightMargin" aria-hidden="true"></i>
                             
-                                                    </td>												
+                                                    </td>										
                                     </tr>
                                 </tbody>
                             </table>
